@@ -1,8 +1,8 @@
 package com.chemasmas.uamasesoratemvn;
 
 import com.chemasmas.uamasesoratemvn.models.Conexion;
+import com.chemasmas.uamasesoratemvn.models.TroncosDTO;
 import com.chemasmas.uamasesoratemvn.models.TroncosDAO;
-import com.chemasmas.uamasesoratemvn.models.TroncosDBO;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.net.URL;
 import java.sql.Connection;
@@ -26,10 +26,10 @@ public class FXMLController implements Initializable {
         Dotenv dotenv = Dotenv.load();
         label.setText(dotenv.get("msj"));
         
-        TroncosDAO tronco = new TroncosDAO();
+        TroncosDTO tronco = new TroncosDTO();
         tronco.setNombre("Tronco 1");
         
-        TroncosDBO tdba= new TroncosDBO();
+        TroncosDAO tdba= new TroncosDAO();
 
         System.out.println(tdba.create(tronco));
         

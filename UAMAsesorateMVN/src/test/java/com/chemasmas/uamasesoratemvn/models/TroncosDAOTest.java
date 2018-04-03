@@ -5,7 +5,9 @@
  */
 package com.chemasmas.uamasesoratemvn.models;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,25 +20,35 @@ import static org.junit.Assert.*;
  *
  * @author eva_0
  */
-public class TroncosDBOTest {
+public class TroncosDAOTest {
     
-    public TroncosDBOTest() {
+    static Connection con;
+    public TroncosDAOTest() {
     }
     
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws SQLException, ClassNotFoundException {
+        con = Conexion.getConexion();
+        con.setAutoCommit(false);
+        
+        /*Datos de Prueba*/
+        
+        
     }
     
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass() throws SQLException {
+        con.rollback();
     }
     
     @Before
     public void setUp() {
+        
     }
     
     @After
     public void tearDown() {
+        
     }
 
     /**
@@ -45,11 +57,11 @@ public class TroncosDBOTest {
     @org.junit.Test
     public void testCreate() {
         System.out.println("create");
-        TroncosDAO nuevo = new TroncosDAO();
+        TroncosDTO nuevo = new TroncosDTO();
         nuevo.setNombre("TEST");
-        TroncosDBO dbo = new TroncosDBO();
+        TroncosDAO dbo = new TroncosDAO();
         assertTrue( dbo.create(nuevo) );
-        assertFalse( dbo.create( new TroncosDAO() ) );
+        assertFalse( dbo.create( new TroncosDTO() ) );
         assertFalse( dbo.create( null ) );
         
     }
@@ -61,9 +73,9 @@ public class TroncosDBOTest {
     public void testGet() {
         System.out.println("get");
         long id = 0L;
-        TroncosDBO instance = new TroncosDBO();
-        TroncosDAO expResult = null;
-        TroncosDAO result = instance.get(id);
+        TroncosDAO instance = new TroncosDAO();
+        TroncosDTO expResult = null;
+        TroncosDTO result = instance.get(id);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -75,9 +87,9 @@ public class TroncosDBOTest {
     @org.junit.Test
     public void testGetAll() {
         System.out.println("getAll");
-        TroncosDBO instance = new TroncosDBO();
-        List<TroncosDAO> expResult = null;
-        List<TroncosDAO> result = instance.getAll();
+        TroncosDAO instance = new TroncosDAO();
+        List<TroncosDTO> expResult = null;
+        List<TroncosDTO> result = instance.getAll();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -89,8 +101,8 @@ public class TroncosDBOTest {
     @org.junit.Test
     public void testUpdate() {
         System.out.println("update");
-        TroncosDAO actualizado = null;
-        TroncosDBO instance = new TroncosDBO();
+        TroncosDTO actualizado = null;
+        TroncosDAO instance = new TroncosDAO();
         boolean expResult = false;
         boolean result = instance.update(actualizado);
         assertEquals(expResult, result);
@@ -104,8 +116,8 @@ public class TroncosDBOTest {
     @org.junit.Test
     public void testDelete_TroncosDAO() {
         System.out.println("delete");
-        TroncosDAO borrar = null;
-        TroncosDBO instance = new TroncosDBO();
+        TroncosDTO borrar = null;
+        TroncosDAO instance = new TroncosDAO();
         boolean expResult = false;
         boolean result = instance.delete(borrar);
         assertEquals(expResult, result);
@@ -120,7 +132,7 @@ public class TroncosDBOTest {
     public void testDelete_long() {
         System.out.println("delete");
         long id_borrar = 0L;
-        TroncosDBO instance = new TroncosDBO();
+        TroncosDAO instance = new TroncosDAO();
         boolean expResult = false;
         boolean result = instance.delete(id_borrar);
         assertEquals(expResult, result);
@@ -135,7 +147,7 @@ public class TroncosDBOTest {
     public void testRawQuerySucces() {
         System.out.println("rawQuerySucces");
         String query = "";
-        TroncosDBO instance = new TroncosDBO();
+        TroncosDAO instance = new TroncosDAO();
         boolean expResult = false;
         boolean result = instance.rawQuerySucces(query);
         assertEquals(expResult, result);
@@ -150,7 +162,7 @@ public class TroncosDBOTest {
     public void testRawQueryResultSet() {
         System.out.println("rawQueryResultSet");
         String query = "";
-        TroncosDBO instance = new TroncosDBO();
+        TroncosDAO instance = new TroncosDAO();
         ResultSet expResult = null;
         ResultSet result = instance.rawQueryResultSet(query);
         assertEquals(expResult, result);

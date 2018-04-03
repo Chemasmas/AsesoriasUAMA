@@ -5,28 +5,71 @@
  */
 package com.chemasmas.uamasesoratemvn.models;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author eva_0
  */
-public class TroncosDAO {
-    private long id;
-    private String nombre;
+public class TroncosDAO implements CRUD<TroncosDTO> {
 
-    public long getId() {
-        return id;
+    private static final String INSERT = "INSERT INTO `troncos`(`nombre`) VALUES(?)";
+    
+    
+    @Override
+    public boolean create(TroncosDTO nuevo) {
+        if(nuevo == null || nuevo.getNombre() == null || nuevo.getNombre().equals(""))
+            return false;
+        
+        try {
+            PreparedStatement pstm = Conexion.getConexion().prepareStatement(INSERT);
+            pstm.setString(1, nuevo.getNombre());
+            pstm.execute();
+            return true;
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(TroncosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 
-    public void setId(long id) {
-        this.id = id;
+    @Override
+    public TroncosDTO get(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public String getNombre() {
-        return nombre;
+    @Override
+    public List<TroncosDTO> getAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    @Override
+    public boolean update(TroncosDTO actualizado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean delete(TroncosDTO borrar) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean delete(long id_borrar) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean rawQuerySucces(String query) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ResultSet rawQueryResultSet(String query) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

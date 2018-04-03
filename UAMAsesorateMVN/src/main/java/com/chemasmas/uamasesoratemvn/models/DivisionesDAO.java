@@ -10,24 +10,5 @@ package com.chemasmas.uamasesoratemvn.models;
  * @author eva_0
  */
 public class DivisionesDAO {
-    private long id;
-    private String nombre;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    
+   
 }
