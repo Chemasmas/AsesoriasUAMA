@@ -26,4 +26,5 @@ public interface CRUD<T> {
     
     public boolean rawQuerySucces(String query);
     public ResultSet rawQueryResultSet(String query);
+    
 }
