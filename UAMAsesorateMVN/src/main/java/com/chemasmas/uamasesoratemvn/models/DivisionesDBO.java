@@ -10,5 +10,5 @@ package com.chemasmas.uamasesoratemvn.models;
  * @author eva_0
  */
 public class DivisionesDBO {
-    
+   
 }
