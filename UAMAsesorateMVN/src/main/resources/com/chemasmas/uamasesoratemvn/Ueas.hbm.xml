@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4/04/2018 08:58:31 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="asesorateuama" name="com.chemasmas.uamasesoratemvn.models.Ueas" optimistic-lock="version" table="ueas">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.chemasmas.uamasesoratemvn.models.Divisiones" fetch="select" name="divisiones">
+      <column name="division" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.chemasmas.uamasesoratemvn.models.Troncos" fetch="select" name="troncos">
+      <column name="tronco" not-null="true"/>
+    </many-to-one>
+    <property name="nombre" type="string">
+      <column length="45" name="nombre"/>
+    </property>
+    <property name="clave" type="string">
+      <column length="10" name="clave"/>
+    </property>
+    <property name="trimestre" type="java.lang.Integer">
+      <column name="trimestre"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="profesoresHasUeases" table="profesores_has_ueas">
+      <key>
+        <column name="uea" not-null="true"/>
+      </key>
+      <one-to-many class="com.chemasmas.uamasesoratemvn.models.ProfesoresHasUeas"/>
+    </set>
+  </class>
+</hibernate-mapping>
