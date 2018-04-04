@@ -5,8 +5,7 @@
  */
 package com.chemasmas.uamasesoratemvn.models;
 
-import io.github.cdimascio.dotenv.Dotenv;
-import java.sql.Connection;
+import org.hibernate.Session;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,15 +17,16 @@ import static org.junit.Assert.*;
  *
  * @author eva_0
  */
-public class ConexionTest {
+public class PruebasHibernate {
     
-    public ConexionTest() {
+    static Session session;
+    
+    public PruebasHibernate() {
     }
     
     @BeforeClass
     public static void setUpClass() {
-        //Dotenv env = Dotenv.load();
-        //System.out.println(env.get("driver"));
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
     @AfterClass
@@ -35,20 +35,29 @@ public class ConexionTest {
     
     @Before
     public void setUp() {
+        
+        session.beginTransaction();
+        
+        
     }
     
     @After
     public void tearDown() {
     }
-
-    /**
-     * Test of getConexion method, of class Conexion.
-     */
-    @Test
-    public void testGetConexion() throws Exception {
-        System.out.println("getConexion");
-        Connection result = Conexion.getConexion();
-        assertNotNull(result);
-    }
     
+    
+    @Test
+    public void test1()
+    {
+        Troncos t = new Troncos();
+        t.setNombre("ok");
+        session.save(t);
+        session.getTransaction().commit();
+    }
+
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    // @Test
+    // public void hello() {}
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4/04/2018 08:58:31 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="asesorateuama" name="com.chemasmas.uamasesoratemvn.models.ProfesoresHasUeas" optimistic-lock="version" table="profesores_has_ueas">
+    <composite-id class="com.chemasmas.uamasesoratemvn.models.ProfesoresHasUeasId" name="id">
+      <key-property name="profesor" type="int">
+        <column name="profesor"/>
+      </key-property>
+      <key-property name="uea" type="int">
+        <column name="uea"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.chemasmas.uamasesoratemvn.models.Profesores" fetch="select" insert="false" name="profesores" update="false">
+      <column name="profesor" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.chemasmas.uamasesoratemvn.models.Ueas" fetch="select" insert="false" name="ueas" update="false">
+      <column name="uea" not-null="true"/>
+    </many-to-one>
+    <property name="lugar" type="string">
+      <column length="45" name="lugar"/>
+    </property>
+    <property name="inicio" type="time">
+      <column length="8" name="inicio"/>
+    </property>
+    <property name="fin" type="time">
+      <column length="8" name="fin"/>
+    </property>
+  </class>
+</hibernate-mapping>
