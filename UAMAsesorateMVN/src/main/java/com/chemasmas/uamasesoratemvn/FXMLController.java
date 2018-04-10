@@ -6,14 +6,38 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 public class FXMLController implements Initializable {
     
     @FXML
     private Label label;
-    
     @FXML
+    private TextField nombreUea;
+    @FXML
+    private Button buscar;
+    @FXML
+    private TableView<?> resulatdosAsesoria;
+    @FXML
+    private TableColumn<?, ?> nombreProfesor;
+    @FXML
+    private TableColumn<?, ?> uea;
+    @FXML
+    private TableColumn<?, ?> lugarAsesoria;
+    @FXML
+    private TableColumn<?, ?> horraio;
+    @FXML
+    private ComboBox<?> divisionCB;
+    @FXML
+    private ComboBox<?> troncoCB;
+    @FXML
+    private ComboBox<?> ueaCB;
+    
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         Dotenv dotenv = Dotenv.load();
@@ -26,4 +50,12 @@ public class FXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     }    
+
+    @FXML
+    private void buscarPorNombre(ActionEvent event) {
+    }
+
+    @FXML
+    private void agendar(ActionEvent event) {
+    }
 }
