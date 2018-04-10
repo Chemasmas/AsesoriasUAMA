@@ -53,6 +53,8 @@ public class PruebasHibernate {
         t.setNombre("ok");
         session.save(t);
         session.getTransaction().commit();
+        System.out.println(t);
+        System.out.println("Guardado!!");
     }
 
     // TODO add test methods here.
