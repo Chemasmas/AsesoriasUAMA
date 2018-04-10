@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml" fx:controller="com.chemasmas.uamasesoratemvn.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="477.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chemasmas.uamasesoratemvn.FXMLController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+        <Label fx:id="label" layoutX="40.0" layoutY="64.0" minHeight="16" minWidth="69" prefHeight="17.0" prefWidth="143.0" text="Buscar por  Nombre" />
+      <TextField fx:id="nombreUea" layoutX="185.0" layoutY="59.0" prefHeight="27.0" prefWidth="272.0" promptText="Nombre UEA" />
+      <Button fx:id="buscar" layoutX="462.0" layoutY="59.0" mnemonicParsing="false" onAction="#buscarPorNombre" prefHeight="27.0" prefWidth="116.0" text="Buscar" />
+      <Label layoutX="34.0" layoutY="14.0" prefHeight="40.0" prefWidth="234.0" text="Asesorate UAMA" textFill="#ee1414">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="-2.0" layoutY="96.0" prefHeight="4.0" prefWidth="618.0" />
+      <TableView fx:id="resulatdosAsesoria" layoutX="38.0" layoutY="252.0" prefHeight="144.0" prefWidth="548.0">
+        <columns>
+          <TableColumn fx:id="nombreProfesor" prefWidth="154.0" text="Nombre Profesor" />
+          <TableColumn fx:id="uea" prefWidth="133.0" text="UEA" />
+            <TableColumn fx:id="lugarAsesoria" prefWidth="134.0" text="Lugar Asesoria" />
+            <TableColumn fx:id="horraio" prefWidth="126.0" text="Horario" />
+        </columns>
+      </TableView>
+      <Button layoutX="424.0" layoutY="410.0" mnemonicParsing="false" onAction="#agendar" prefHeight="27.0" prefWidth="116.0" text="Agendar" />
+      <Label layoutX="69.0" layoutY="105.0" prefHeight="17.0" prefWidth="108.0" text="División" />
+      <Label layoutX="69.0" layoutY="139.0" prefHeight="17.0" prefWidth="116.0" text="Tronco" />
+      <Label layoutX="69.0" layoutY="172.0" prefHeight="17.0" prefWidth="108.0" text="UEA" />
+      <Button layoutX="460.0" layoutY="219.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="97.0" text="Buscar" />
+      <ComboBox fx:id="divisionCB" layoutX="230.0" layoutY="100.0" prefHeight="27.0" prefWidth="348.0" />
+      <ComboBox fx:id="troncoCB" layoutX="230.0" layoutY="134.0" prefHeight="27.0" prefWidth="348.0" />
+      <ComboBox fx:id="ueaCB" layoutX="230.0" layoutY="167.0" prefHeight="27.0" prefWidth="348.0" />
     </children>
 </AnchorPane>
