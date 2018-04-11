@@ -71,13 +71,7 @@ public class FXMLController implements Initializable {
     private ComboBox<Ueas> ueaCB;
     
 
-    
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        Dotenv dotenv = Dotenv.load();
-        label.setText(dotenv.get("msj"));   
-    }
-    
+       
     @FXML
     private void setDivision(ActionEvent event) {
         division= this.divisionCB.getSelectionModel().getSelectedItem();
@@ -154,6 +148,7 @@ public class FXMLController implements Initializable {
     @FXML
     private void buscarPorNombre(ActionEvent event) {
         String nombUea = nombreUea.toString();
+        System.out.println(nombUea);
         List<Ueas> lista = session.createCriteria(Ueas.class)
                 .add( Restrictions.like("nombre", "%"+nombreUea+"%") )
                 .list();
@@ -165,10 +160,19 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void agendar(ActionEvent event) throws IOException {
+   
+        ProfesoresHasUeasMTV selected = resulatdosAsesoria.getSelectionModel().getSelectedItem();
+        
+        System.out.println(selected);
         Parent homePage;
-        homePage = FXMLLoader.load(getClass().getResource("/fxml/DetallesAsesoria.fxml"));
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DetallesAsesoria.fxml"));
+        homePage = loader.load();
         Scene homePageScene = new Scene(homePage);
 
+        DetallesAsesoriaController dac = loader.getController();
+        dac.setSelected(selected);
+        
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.hide();
         appStage.setScene(homePageScene);

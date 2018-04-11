@@ -5,6 +5,8 @@
  */
 package com.chemasmas.uamasesoratemvn;
 
+import com.chemasmas.uamasesoratemvn.models.ProfesoresHasUeas;
+import com.chemasmas.uamasesoratemvn.models.ProfesoresHasUeasMTV;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,6 +41,8 @@ public class DetallesAsesoriaController implements Initializable {
     private Label horaInicio;
     @FXML
     private Label horaFin;
+    private ProfesoresHasUeasMTV selected;
+    private ProfesoresHasUeas detalles;
 
     /**
      * Initializes the controller class.
@@ -70,6 +74,21 @@ public class DetallesAsesoriaController implements Initializable {
         appStage.hide();
         appStage.setScene(homePageScene);
         appStage.show();
+    }
+
+    void setSelected(ProfesoresHasUeasMTV selected) {
+        this.selected = selected;
+        this.detalles = selected.getMe();
+        System.out.println(this.selected.getMe());
+        
+        this.nombreProfesor.setText(detalles.getProfesores().getNombre());
+        this.telProfesor.setText(detalles.getProfesores().getTelefono());
+        this.correoProfesor.setText(detalles.getProfesores().getCorreo());
+        this.nombreUEA.setText(detalles.getUeas().getNombre());
+        this.claveUea.setText(detalles.getUeas().getClave());
+        
+        this.horaInicio.setText(detalles.getInicio().toString());
+        this.horaFin.setText(detalles.getFin().toString());
     }
     
 }
