@@ -63,8 +63,10 @@ public class Profesores  implements java.io.Serializable {
         this.profesoresHasUeases = profesoresHasUeases;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Profesores{" + "id=" + id + ", nombre=" + nombre + ", correo=" + correo + ", telefono=" + telefono + ", profesoresHasUeases=" + profesoresHasUeases + '}';
+    }
 
 }
 
