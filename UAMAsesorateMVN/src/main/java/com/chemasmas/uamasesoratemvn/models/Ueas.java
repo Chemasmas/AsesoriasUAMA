@@ -90,10 +90,6 @@ public class Ueas  implements java.io.Serializable {
     public String toString() {
         return nombre;
     }
-
-
-
-
 }
 
 
