@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="477.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chemasmas.uamasesoratemvn.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="477.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chemasmas.uamasesoratemvn.FXMLController">
     <children>
         <Label fx:id="label" layoutX="40.0" layoutY="64.0" minHeight="16" minWidth="69" prefHeight="17.0" prefWidth="143.0" text="Buscar por  Nombre" />
       <TextField fx:id="nombreUea" layoutX="185.0" layoutY="59.0" prefHeight="27.0" prefWidth="272.0" promptText="Nombre UEA" />
@@ -25,8 +25,9 @@
         <columns>
           <TableColumn fx:id="nombreProfesor" prefWidth="154.0" text="Nombre Profesor" />
           <TableColumn fx:id="uea" prefWidth="133.0" text="UEA" />
-            <TableColumn fx:id="lugarAsesoria" prefWidth="134.0" text="Lugar Asesoria" />
-            <TableColumn fx:id="horraio" prefWidth="126.0" text="Horario" />
+            <TableColumn fx:id="lugarAsesoria" prefWidth="131.0" text="Lugar Asesoria" />
+            <TableColumn fx:id="horaioInicio" prefWidth="129.0" text="Inicio" />
+            <TableColumn prefWidth="75.0" text="Column X" />
         </columns>
       </TableView>
       <Button layoutX="424.0" layoutY="410.0" mnemonicParsing="false" onAction="#agendar" prefHeight="27.0" prefWidth="116.0" text="Agendar" />

@@ -3,36 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.chemasmas.uamasesoratemvn;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
- * @author eva_0
+ * @author jack
  */
-public class DetallesAsesoriaController implements Initializable {
+public class ContactoController implements Initializable {
 
     @FXML
-    private Label nombreProfesor;
+    private TextField nombreAlumno;
     @FXML
-    private Label telProfesor;
+    private TextField matriculaAlumno;
     @FXML
-    private Label correoProfesor;
+    private TextField correoAlumno;
     @FXML
-    private Label nombreUEA;
+    private Button enviar;
     @FXML
-    private Label claveUea;
-    @FXML
-    private Label horaInicio;
-    @FXML
-    private Label horaFin;
+    private Button volverDetalles;
 
     /**
      * Initializes the controller class.
@@ -43,11 +39,11 @@ public class DetallesAsesoriaController implements Initializable {
     }    
 
     @FXML
-    private void volverABuscarAsesoria(ActionEvent event) {
+    private void enviarAsesoria(ActionEvent event) {
     }
 
     @FXML
-    private void confirmarAsesoria(ActionEvent event) {
+    private void volverDetalles(ActionEvent event) {
     }
     
 }
