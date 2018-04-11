@@ -20,8 +20,6 @@ public class FXMLController implements Initializable {
     @FXML
     private TextField nombreUea;
     @FXML
-    private Button buscar;
-    @FXML
     private TableView<?> resulatdosAsesoria;
     @FXML
     private TableColumn<?, ?> nombreProfesor;
@@ -30,13 +28,19 @@ public class FXMLController implements Initializable {
     @FXML
     private TableColumn<?, ?> lugarAsesoria;
     @FXML
-    private TableColumn<?, ?> horraio;
-    @FXML
     private ComboBox<?> divisionCB;
     @FXML
     private ComboBox<?> troncoCB;
     @FXML
     private ComboBox<?> ueaCB;
+    @FXML
+    private TableColumn<?, ?> horario;
+    @FXML
+    private Button buscarNombre;
+    @FXML
+    private Button agendar;
+    @FXML
+    private Button buscarDTN;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -57,5 +61,9 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void agendar(ActionEvent event) {
+    }
+
+    @FXML
+    private void buscarPorDTU(ActionEvent event) {
     }
 }
