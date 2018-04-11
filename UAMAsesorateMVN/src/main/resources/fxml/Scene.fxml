@@ -34,8 +34,8 @@
       <Label layoutX="69.0" layoutY="139.0" prefHeight="17.0" prefWidth="116.0" text="Tronco" />
       <Label layoutX="69.0" layoutY="172.0" prefHeight="17.0" prefWidth="108.0" text="UEA" />
       <Button layoutX="460.0" layoutY="219.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="97.0" text="Buscar" />
-      <ComboBox id="troncoCB" fx:id="divisionCB" layoutX="230.0" layoutY="100.0" prefHeight="27.0" prefWidth="348.0" promptText="Escoge una Division" />
-      <ComboBox id="troncoCB" fx:id="troncoCB" layoutX="230.0" layoutY="134.0" prefHeight="27.0" prefWidth="348.0" promptText="Escoge un Tronco" />
+      <ComboBox id="troncoCB" fx:id="divisionCB" layoutX="230.0" layoutY="100.0" onAction="#setDivision" prefHeight="27.0" prefWidth="348.0" promptText="Escoge una Division" />
+      <ComboBox id="troncoCB" fx:id="troncoCB" layoutX="230.0" layoutY="134.0" onAction="#setTronco" prefHeight="27.0" prefWidth="348.0" promptText="Escoge un Tronco" />
       <ComboBox id="ueaCB" fx:id="ueaCB" layoutX="230.0" layoutY="167.0" prefHeight="27.0" prefWidth="348.0" promptText="Escoge una UEA" />
     </children>
 </AnchorPane>

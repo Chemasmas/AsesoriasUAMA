@@ -18,10 +18,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import org.hibernate.Session;
+import org.hibernate.criterion.Property;
 
 public class FXMLController implements Initializable {
     
     static Session session;
+    private Divisiones division;
+    private Troncos tronco;
     
     @FXML
     private Label label;
@@ -50,8 +53,24 @@ public class FXMLController implements Initializable {
         System.out.println("You clicked me!");
         Dotenv dotenv = Dotenv.load();
         label.setText(dotenv.get("msj"));   
+    }
+    
+    @FXML
+    private void setDivision(ActionEvent event) {
         
+        division= this.divisionCB.getSelectionModel().getSelectedItem();
         
+    }
+    
+    @FXML
+    private void setTronco(ActionEvent event) {
+        tronco = this.troncoCB.getSelectionModel().getSelectedItem();
+        
+        List<Ueas> lUeas = session.createCriteria(Ueas.class)
+                .add( Property.forName("divisiones").eq(this.division) )
+                .list();
+        ueaCB.getItems().addAll(lUeas);
+
     }
     
     @Override
@@ -64,8 +83,8 @@ public class FXMLController implements Initializable {
         List<Troncos> lTro = session.createCriteria(Troncos.class).list();
         troncoCB.getItems().addAll(lTro);
         
-        List<Ueas> lUeas = session.createCriteria(Ueas.class).list();
-        ueaCB.getItems().addAll(lUeas);
+        //List<Ueas> lUeas = session.createCriteria(Ueas.class).list();
+        //ueaCB.getItems().addAll(lUeas);
     }    
 
     @FXML

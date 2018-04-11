@@ -48,7 +48,7 @@ public class Troncos  implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "Troncos{" + "id=" + id + ", nombre=" + nombre + ", ueases=" + ueases + '}';
+        return nombre;
     }
 
 }
