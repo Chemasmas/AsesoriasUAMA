@@ -7,12 +7,17 @@ import com.chemasmas.uamasesoratemvn.models.ProfesoresHasUeas;
 import com.chemasmas.uamasesoratemvn.models.Troncos;
 import com.chemasmas.uamasesoratemvn.models.Ueas;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,6 +25,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -78,7 +84,15 @@ public class FXMLController implements Initializable {
     }
 
     @FXML
-    private void agendar(ActionEvent event) {
+    private void agendar(ActionEvent event) throws IOException {
+        Parent homePage;
+        homePage = FXMLLoader.load(getClass().getResource("/fxml/DetallesAsesoria.fxml"));
+        Scene homePageScene = new Scene(homePage);
+
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.hide();
+        appStage.setScene(homePageScene);
+        appStage.show();
     }
 
     @FXML
