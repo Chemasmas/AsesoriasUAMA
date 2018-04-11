@@ -18,6 +18,7 @@ public class ProfesoresHasUeasMTV  implements java.io.Serializable {
      StringProperty lugar;
      StringProperty inicio;
      StringProperty fin;
+     private ProfesoresHasUeas me;
      
     public ProfesoresHasUeasMTV(ProfesoresHasUeas phu) {
         profesor = new SimpleStringProperty(phu.getProfesores().getNombre());
@@ -25,6 +26,7 @@ public class ProfesoresHasUeasMTV  implements java.io.Serializable {
         lugar = new SimpleStringProperty(phu.getUeas().getNombre());
         inicio = new SimpleStringProperty(phu.getInicio().toString());
         fin = new SimpleStringProperty(phu.getInicio().toString());
+        me = phu;
     }
 
     @Override
@@ -71,9 +73,17 @@ public class ProfesoresHasUeasMTV  implements java.io.Serializable {
     public void setFin(StringProperty fin) {
         this.fin = fin;
     }
+
+    public ProfesoresHasUeas getMe() {
+        return me;
+    }
+
+    public void setMe(ProfesoresHasUeas me) {
+        this.me = me;
+    }
     
     
-        
+    
     
 
 }

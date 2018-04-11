@@ -35,7 +35,7 @@
       <TextField fx:id="nombreAlumno" layoutX="260.0" layoutY="97.0" prefHeight="27.0" prefWidth="293.0" promptText="Nombre Alumno" />
       <TextField fx:id="matriculaAlumno" layoutX="260.0" layoutY="154.0" prefHeight="27.0" prefWidth="293.0" promptText="Matricula" />
       <TextField fx:id="correoAlumno" layoutX="260.0" layoutY="215.0" prefHeight="27.0" prefWidth="293.0" promptText="ejemplo@correo.com" />
-      <Button fx:id="enviar" layoutX="83.0" layoutY="289.0" mnemonicParsing="false" onAction="#enviarAsesoria" prefHeight="27.0" prefWidth="130.0" text="Enviar" />
-      <Button fx:id="volverDetalles" layoutX="407.0" layoutY="289.0" mnemonicParsing="false" onAction="#volverDetalles" prefHeight="27.0" prefWidth="137.0" text="Volver" />
+      <Button fx:id="enviar" layoutX="414.0" layoutY="285.0" mnemonicParsing="false" onAction="#enviarAsesoria" prefHeight="27.0" prefWidth="130.0" text="Enviar" />
+      <Button fx:id="volverDetalles" layoutX="84.0" layoutY="285.0" mnemonicParsing="false" onAction="#volverDetalles" prefHeight="27.0" prefWidth="137.0" text="Volver" />
    </children>
 </AnchorPane>

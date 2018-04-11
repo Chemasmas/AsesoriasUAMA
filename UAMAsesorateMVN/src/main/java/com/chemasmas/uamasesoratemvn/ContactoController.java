@@ -47,7 +47,15 @@ public class ContactoController implements Initializable {
     }
 
     @FXML
-    private void enviarAsesoria(ActionEvent event) {
+    private void enviarAsesoria(ActionEvent event) throws IOException {
+        Parent homePage;
+        homePage = FXMLLoader.load(getClass().getResource("/fxml/MensajeConfirmacion.fxml"));
+        Scene homePageScene = new Scene(homePage);
+
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.hide();
+        appStage.setScene(homePageScene);
+        appStage.show();
         
     }
 
