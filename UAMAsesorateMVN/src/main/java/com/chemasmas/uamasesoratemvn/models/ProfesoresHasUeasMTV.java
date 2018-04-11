@@ -26,7 +26,54 @@ public class ProfesoresHasUeasMTV  implements java.io.Serializable {
         inicio = new SimpleStringProperty(phu.getInicio().toString());
         fin = new SimpleStringProperty(phu.getInicio().toString());
     }
+
+    @Override
+    public String toString() {
+        return uea.getValueSafe();
+    }
+
+    public StringProperty getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(StringProperty profesor) {
+        this.profesor = profesor;
+    }
+
+    public StringProperty getUea() {
+        return uea;
+    }
+
+    public void setUea(StringProperty uea) {
+        this.uea = uea;
+    }
+
+    public StringProperty getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(StringProperty lugar) {
+        this.lugar = lugar;
+    }
+
+    public StringProperty getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(StringProperty inicio) {
+        this.inicio = inicio;
+    }
+
+    public StringProperty getFin() {
+        return fin;
+    }
+
+    public void setFin(StringProperty fin) {
+        this.fin = fin;
+    }
     
+    
+        
     
 
 }

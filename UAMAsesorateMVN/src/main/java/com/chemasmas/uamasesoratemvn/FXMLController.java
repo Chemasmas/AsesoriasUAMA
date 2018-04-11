@@ -4,13 +4,16 @@ import com.chemasmas.uamasesoratemvn.models.Divisiones;
 import com.chemasmas.uamasesoratemvn.models.HibernateUtil;
 import com.chemasmas.uamasesoratemvn.models.Profesores;
 import com.chemasmas.uamasesoratemvn.models.ProfesoresHasUeas;
+import com.chemasmas.uamasesoratemvn.models.ProfesoresHasUeasMTV;
 import com.chemasmas.uamasesoratemvn.models.Troncos;
 import com.chemasmas.uamasesoratemvn.models.Ueas;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.net.URL;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,9 +21,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Property;
@@ -41,21 +46,24 @@ public class FXMLController implements Initializable {
     @FXML
     private Button buscar;
     @FXML
-    private TableView<ProfesoresHasUeas> resulatdosAsesoria;
+    private TableView<ProfesoresHasUeasMTV> resulatdosAsesoria;
     @FXML
-    private TableColumn<Profesores, String> nombreProfesor;
+    private TableColumn<ProfesoresHasUeasMTV, String> nombreProfesor;
     @FXML
-    private TableColumn<Ueas, String> uea;
+    private TableColumn<ProfesoresHasUeasMTV, String> uea;
     @FXML
-    private TableColumn<String, String> lugarAsesoria;
+    private TableColumn<ProfesoresHasUeasMTV, String> lugarAsesoria;
+    @FXML
+    private TableColumn<ProfesoresHasUeasMTV, String> horaioInicio;
+    @FXML
+    private TableColumn<ProfesoresHasUeasMTV, String> horaiofIN;
     @FXML
     private ComboBox<Divisiones> divisionCB;
     @FXML
     private ComboBox<Troncos> troncoCB;
     @FXML
     private ComboBox<Ueas> ueaCB;
-    @FXML
-    private TableColumn<Time, String> horaioInicio;
+    
 
     
     private void handleButtonAction(ActionEvent event) {
@@ -100,16 +108,41 @@ public class FXMLController implements Initializable {
 
         List<Troncos> lTro = session.createCriteria(Troncos.class).list();
         troncoCB.getItems().addAll(lTro);
-
-       // List<Ueas> lUeas = session.createCriteria(Ueas.class).list();
-       // ueaCB.getItems().addAll(lUeas);
-//
-//        Query query = session.createSQLQuery("select * from UEAs u where u.division = :division and u.tronco = :tronco")
-//        .addEntity(Profesores.class)
-//        .setParameter("division", division)
-//        .setParameter("tronco", tronco);
-//        List<Ueas> list = (List<Ueas>) query.list();
-
+        
+        nombreProfesor.setCellValueFactory(new Callback<CellDataFeatures<ProfesoresHasUeasMTV, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(CellDataFeatures<ProfesoresHasUeasMTV, String> p) {
+                // p.getValue() returns the Person instance for a particular TableView row
+                return p.getValue().getProfesor();
+            }
+         });
+        
+        uea.setCellValueFactory(new Callback<CellDataFeatures<ProfesoresHasUeasMTV, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(CellDataFeatures<ProfesoresHasUeasMTV, String> p) {
+                // p.getValue() returns the Person instance for a particular TableView row
+                return p.getValue().getUea();
+            }
+         });
+        
+        lugarAsesoria.setCellValueFactory(new Callback<CellDataFeatures<ProfesoresHasUeasMTV, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(CellDataFeatures<ProfesoresHasUeasMTV, String> p) {
+                // p.getValue() returns the Person instance for a particular TableView row
+                return p.getValue().getLugar();
+            }
+         });
+        
+        horaioInicio.setCellValueFactory(new Callback<CellDataFeatures<ProfesoresHasUeasMTV, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(CellDataFeatures<ProfesoresHasUeasMTV, String> p) {
+                // p.getValue() returns the Person instance for a particular TableView row
+                return p.getValue().getInicio();
+            }
+         });
+        
+        horaiofIN.setCellValueFactory(new Callback<CellDataFeatures<ProfesoresHasUeasMTV, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(CellDataFeatures<ProfesoresHasUeasMTV, String> p) {
+                // p.getValue() returns the Person instance for a particular TableView row
+                return p.getValue().getFin();
+            }
+         });
     }
 
     @FXML
@@ -124,9 +157,6 @@ public class FXMLController implements Initializable {
         //resulatdosAsesoria.getItems().addAll(lista);
     }
 
-    @FXML
-    private void agendar(ActionEvent event) {
-    }
 
     @FXML
     private void buscarPorDTU(ActionEvent event) {
@@ -134,9 +164,16 @@ public class FXMLController implements Initializable {
                 .add( Property.forName("ueas").eq(this.ueaR) )
                 .list();
         System.out.println(lista);
+        List<ProfesoresHasUeasMTV> listaP = new ArrayList<>();
         
+        for (ProfesoresHasUeas registro : lista) {
+            listaP.add( new ProfesoresHasUeasMTV(registro) );
+        }
+        
+        
+        System.out.println(listaP);
         resulatdosAsesoria.getItems().clear();
-        resulatdosAsesoria.getItems().addAll(lista);
+        resulatdosAsesoria.getItems().addAll(listaP);
         
     }
     
