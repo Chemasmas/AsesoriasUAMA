@@ -23,12 +23,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Property;
+import org.hibernate.criterion.Restrictions;
 
 public class FXMLController implements Initializable {
 
     static Session session;
     private Divisiones division;
     private Troncos tronco;
+    private Ueas ueaR;
+    private ProfesoresHasUeas PHasU;
     
     @FXML
     private Label label;
@@ -39,9 +42,9 @@ public class FXMLController implements Initializable {
     @FXML
     private TableView<ProfesoresHasUeas> resulatdosAsesoria;
     @FXML
-    private TableColumn<?, ?> nombreProfesor;
+    private TableColumn<Profesores, String> nombreProfesor;
     @FXML
-    private TableColumn<?, ?> uea;
+    private TableColumn<Ueas, String> uea;
     @FXML
     private TableColumn<?, ?> lugarAsesoria;
     @FXML
@@ -81,6 +84,12 @@ public class FXMLController implements Initializable {
 
     }
     
+    @FXML
+    private void setUEA(ActionEvent event) {
+        this.ueaR = this.ueaCB.getSelectionModel().getSelectedItem();
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         session = HibernateUtil.getSessionFactory().openSession();
@@ -105,7 +114,13 @@ public class FXMLController implements Initializable {
     @FXML
     private void buscarPorNombre(ActionEvent event) {
         String nombUea = nombreUea.toString();
+        List<Ueas> lista = session.createCriteria(Ueas.class)
+                .add( Restrictions.like("nombre", "%"+nombreUea+"%") )
+                .list();
+        System.out.println(lista);
         
+        //resulatdosAsesoria.getItems().clear();
+        //resulatdosAsesoria.getItems().addAll(lista);
     }
 
     @FXML
@@ -114,7 +129,13 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void buscarPorDTU(ActionEvent event) {
+        List<ProfesoresHasUeas> lista = session.createCriteria(ProfesoresHasUeas.class)
+                .add( Property.forName("ueas").eq(this.ueaR) )
+                .list();
+        System.out.println(lista);
         
-       
+        resulatdosAsesoria.getItems().clear();
+        resulatdosAsesoria.getItems().addAll(lista);
+        
     }
 }
