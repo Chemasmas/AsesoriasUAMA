@@ -27,7 +27,7 @@
           <TableColumn fx:id="uea" prefWidth="133.0" text="UEA" />
             <TableColumn fx:id="lugarAsesoria" prefWidth="131.0" text="Lugar Asesoria" />
             <TableColumn fx:id="horaioInicio" prefWidth="129.0" text="Inicio" />
-            <TableColumn prefWidth="75.0" text="Fin" />
+            <TableColumn fx:id="horaiofIN" prefWidth="75.0" text="Fin" />
         </columns>
       </TableView>
       <Button layoutX="424.0" layoutY="410.0" mnemonicParsing="false" onAction="#agendar" prefHeight="27.0" prefWidth="116.0" text="Agendar" />
