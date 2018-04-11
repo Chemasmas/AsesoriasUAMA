@@ -8,6 +8,7 @@ import com.chemasmas.uamasesoratemvn.models.Troncos;
 import com.chemasmas.uamasesoratemvn.models.Ueas;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.net.URL;
+import java.sql.Time;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -46,7 +47,7 @@ public class FXMLController implements Initializable {
     @FXML
     private TableColumn<Ueas, String> uea;
     @FXML
-    private TableColumn<?, ?> lugarAsesoria;
+    private TableColumn<String, String> lugarAsesoria;
     @FXML
     private ComboBox<Divisiones> divisionCB;
     @FXML
@@ -54,7 +55,7 @@ public class FXMLController implements Initializable {
     @FXML
     private ComboBox<Ueas> ueaCB;
     @FXML
-    private TableColumn<?, ?> horaioInicio;
+    private TableColumn<Time, String> horaioInicio;
 
     
     private void handleButtonAction(ActionEvent event) {
@@ -138,4 +139,5 @@ public class FXMLController implements Initializable {
         resulatdosAsesoria.getItems().addAll(lista);
         
     }
+    
 }
