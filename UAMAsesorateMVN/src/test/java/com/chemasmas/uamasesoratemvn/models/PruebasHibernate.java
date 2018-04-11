@@ -5,6 +5,8 @@
  */
 package com.chemasmas.uamasesoratemvn.models;
 
+import java.util.Arrays;
+import java.util.List;
 import org.hibernate.Session;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -35,25 +37,52 @@ public class PruebasHibernate {
     
     @Before
     public void setUp() {
-        
         session.beginTransaction();
-        
-        
     }
     
     @After
     public void tearDown() {
+        session.getTransaction().commit();
     }
     
     
     @Test
-    public void test1()
+    public void insert()
     {
         Troncos t = new Troncos();
-        t.setNombre("ok");
+        t.setNombre("ok2");
         session.save(t);
-        session.getTransaction().commit();
+        System.out.println(t.getNombre());
+        System.out.println("Guardado!!");
     }
+    /*
+    @Test
+    public void delete()
+    {
+        Troncos t = new Troncos();
+        t.setNombre("ok3");
+        session.save(t);
+        
+        
+        Troncos t2  = (Troncos)session.byId(Troncos.class).load();
+        //session.delete(t);
+        
+        System.out.println("Eliminando!!");
+    }*/
+    
+    
+    @Test
+    public void select(){
+        
+        //Divisiones i = new Divisiones();
+        System.out.println("Select");
+        List<Troncos> lt = session.createCriteria(Troncos.class).list();
+        
+//        session.byId(Troncos.class)
+        System.out.println((lt));
+        System.out.println("Fin Select");
+    }
+
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
