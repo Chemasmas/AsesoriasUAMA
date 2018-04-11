@@ -31,6 +31,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Property;
