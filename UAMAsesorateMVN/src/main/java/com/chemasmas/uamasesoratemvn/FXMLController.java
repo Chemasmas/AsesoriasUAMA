@@ -62,9 +62,7 @@ public class FXMLController implements Initializable {
     
     @FXML
     private void setDivision(ActionEvent event) {
-        
         division= this.divisionCB.getSelectionModel().getSelectedItem();
-        
     }
     
     @FXML
@@ -73,7 +71,12 @@ public class FXMLController implements Initializable {
         
         List<Ueas> lUeas = session.createCriteria(Ueas.class)
                 .add( Property.forName("divisiones").eq(this.division) )
+                .add( Property.forName("troncos").eq(this.tronco) )
                 .list();
+        
+        System.out.println(lUeas);
+        
+        ueaCB.getItems().clear();
         ueaCB.getItems().addAll(lUeas);
 
     }
@@ -88,8 +91,8 @@ public class FXMLController implements Initializable {
         List<Troncos> lTro = session.createCriteria(Troncos.class).list();
         troncoCB.getItems().addAll(lTro);
 
-        List<Ueas> lUeas = session.createCriteria(Ueas.class).list();
-        ueaCB.getItems().addAll(lUeas);
+       // List<Ueas> lUeas = session.createCriteria(Ueas.class).list();
+       // ueaCB.getItems().addAll(lUeas);
 //
 //        Query query = session.createSQLQuery("select * from UEAs u where u.division = :division and u.tronco = :tronco")
 //        .addEntity(Profesores.class)
