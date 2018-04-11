@@ -44,7 +44,7 @@ public class FXMLController implements Initializable {
     private Troncos tronco;
     private Ueas ueaR;
     private ProfesoresHasUeas PHasU;
-    
+
     @FXML
     private Label label;
     @FXML
@@ -69,96 +69,93 @@ public class FXMLController implements Initializable {
     private ComboBox<Troncos> troncoCB;
     @FXML
     private ComboBox<Ueas> ueaCB;
-    
 
-    
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         Dotenv dotenv = Dotenv.load();
-        label.setText(dotenv.get("msj"));   
+        label.setText(dotenv.get("msj"));
     }
-    
+
     @FXML
     private void setDivision(ActionEvent event) {
-        division= this.divisionCB.getSelectionModel().getSelectedItem();
+        division = this.divisionCB.getSelectionModel().getSelectedItem();
     }
-    
+
     @FXML
     private void setTronco(ActionEvent event) {
         tronco = this.troncoCB.getSelectionModel().getSelectedItem();
-        
+
         List<Ueas> lUeas = session.createCriteria(Ueas.class)
-                .add( Property.forName("divisiones").eq(this.division) )
-                .add( Property.forName("troncos").eq(this.tronco) )
+                .add(Property.forName("divisiones").eq(this.division))
+                .add(Property.forName("troncos").eq(this.tronco))
                 .list();
-        
+
         System.out.println(lUeas);
-        
+
         ueaCB.getItems().clear();
         ueaCB.getItems().addAll(lUeas);
 
     }
-    
+
     @FXML
     private void setUEA(ActionEvent event) {
         this.ueaR = this.ueaCB.getSelectionModel().getSelectedItem();
     }
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         session = HibernateUtil.getSessionFactory().openSession();
 
         List<Divisiones> lDiv = session.createCriteria(Divisiones.class).list();
         divisionCB.getItems().addAll(lDiv);
-
+ 
         List<Troncos> lTro = session.createCriteria(Troncos.class).list();
         troncoCB.getItems().addAll(lTro);
-        
+
         nombreProfesor.setCellValueFactory(new Callback<CellDataFeatures<ProfesoresHasUeasMTV, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(CellDataFeatures<ProfesoresHasUeasMTV, String> p) {
                 // p.getValue() returns the Person instance for a particular TableView row
                 return p.getValue().getProfesor();
             }
-         });
-        
+        });
+
         uea.setCellValueFactory(new Callback<CellDataFeatures<ProfesoresHasUeasMTV, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(CellDataFeatures<ProfesoresHasUeasMTV, String> p) {
                 // p.getValue() returns the Person instance for a particular TableView row
                 return p.getValue().getUea();
             }
-         });
-        
+        });
+
         lugarAsesoria.setCellValueFactory(new Callback<CellDataFeatures<ProfesoresHasUeasMTV, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(CellDataFeatures<ProfesoresHasUeasMTV, String> p) {
                 // p.getValue() returns the Person instance for a particular TableView row
                 return p.getValue().getLugar();
             }
-         });
-        
+        });
+
         horaioInicio.setCellValueFactory(new Callback<CellDataFeatures<ProfesoresHasUeasMTV, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(CellDataFeatures<ProfesoresHasUeasMTV, String> p) {
                 // p.getValue() returns the Person instance for a particular TableView row
                 return p.getValue().getInicio();
             }
-         });
-        
+        });
+
         horaiofIN.setCellValueFactory(new Callback<CellDataFeatures<ProfesoresHasUeasMTV, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(CellDataFeatures<ProfesoresHasUeasMTV, String> p) {
                 // p.getValue() returns the Person instance for a particular TableView row
                 return p.getValue().getFin();
             }
-         });
+        });
     }
 
     @FXML
     private void buscarPorNombre(ActionEvent event) {
         String nombUea = nombreUea.toString();
         List<Ueas> lista = session.createCriteria(Ueas.class)
-                .add( Restrictions.like("nombre", "%"+nombreUea+"%") )
+                .add(Restrictions.like("nombre", "%" + nombreUea + "%"))
                 .list();
         System.out.println(lista);
-        
+
         //resulatdosAsesoria.getItems().clear();
         //resulatdosAsesoria.getItems().addAll(lista);
     }
@@ -178,20 +175,19 @@ public class FXMLController implements Initializable {
     @FXML
     private void buscarPorDTU(ActionEvent event) {
         List<ProfesoresHasUeas> lista = session.createCriteria(ProfesoresHasUeas.class)
-                .add( Property.forName("ueas").eq(this.ueaR) )
+                .add(Property.forName("ueas").eq(this.ueaR))
                 .list();
         System.out.println(lista);
         List<ProfesoresHasUeasMTV> listaP = new ArrayList<>();
-        
+
         for (ProfesoresHasUeas registro : lista) {
-            listaP.add( new ProfesoresHasUeasMTV(registro) );
+            listaP.add(new ProfesoresHasUeasMTV(registro));
         }
-        
-        
+ 
         System.out.println(listaP);
         resulatdosAsesoria.getItems().clear();
         resulatdosAsesoria.getItems().addAll(listaP);
-        
+
     }
-    
+
 }
