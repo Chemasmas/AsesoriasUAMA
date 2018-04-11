@@ -86,6 +86,11 @@ public class Ueas  implements java.io.Serializable {
         this.profesoresHasUeases = profesoresHasUeases;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
 
 
 
