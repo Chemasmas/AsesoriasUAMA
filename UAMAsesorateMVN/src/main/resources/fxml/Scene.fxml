@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="477.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chemasmas.uamasesoratemvn.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="477.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chemasmas.uamasesoratemvn.FXMLController">
     <children>
         <Label fx:id="label" layoutX="40.0" layoutY="64.0" minHeight="16" minWidth="69" prefHeight="17.0" prefWidth="143.0" text="Buscar por  Nombre" />
       <TextField fx:id="nombreUea" layoutX="185.0" layoutY="59.0" prefHeight="27.0" prefWidth="272.0" promptText="Nombre UEA" />
@@ -34,8 +34,8 @@
       <Label layoutX="69.0" layoutY="139.0" prefHeight="17.0" prefWidth="116.0" text="Tronco" />
       <Label layoutX="69.0" layoutY="172.0" prefHeight="17.0" prefWidth="108.0" text="UEA" />
       <Button layoutX="460.0" layoutY="219.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="97.0" text="Buscar" />
-      <ComboBox fx:id="divisionCB" layoutX="230.0" layoutY="100.0" prefHeight="27.0" prefWidth="348.0" />
-      <ComboBox fx:id="troncoCB" layoutX="230.0" layoutY="134.0" prefHeight="27.0" prefWidth="348.0" />
-      <ComboBox fx:id="ueaCB" layoutX="230.0" layoutY="167.0" prefHeight="27.0" prefWidth="348.0" />
+      <ComboBox id="troncoCB" fx:id="divisionCB" layoutX="230.0" layoutY="100.0" prefHeight="27.0" prefWidth="348.0" promptText="Escoge una Division" />
+      <ComboBox id="troncoCB" fx:id="troncoCB" layoutX="230.0" layoutY="134.0" prefHeight="27.0" prefWidth="348.0" promptText="Escoge un Tronco" />
+      <ComboBox id="ueaCB" fx:id="ueaCB" layoutX="230.0" layoutY="167.0" prefHeight="27.0" prefWidth="348.0" promptText="Escoge una UEA" />
     </children>
 </AnchorPane>
