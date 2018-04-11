@@ -45,6 +45,11 @@ public class Divisiones  implements java.io.Serializable {
         this.ueases = ueases;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
 
 
 
